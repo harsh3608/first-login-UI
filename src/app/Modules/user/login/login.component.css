@@ -18,11 +18,19 @@
   width: 50%;
   height: match-parent;
   overflow: hidden;
-  border-color: black;
   opacity: 0.7;
-
+  background-color: black;
 }
 
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
+
+span{
+  color: white;
+}
+
+label{
+  color: white;
+}
+
