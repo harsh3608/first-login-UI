@@ -11,7 +11,6 @@
   flex-direction: row;
   height: 70%;
   width: 60%;
-
 }
 
 .card {
@@ -19,7 +18,7 @@
   height: match-parent;
   overflow: hidden;
   opacity: 0.7;
-  background-color: black; 
+  background-color: black;
   /* backdrop-filter: blur(10px); */
 }
 
@@ -27,11 +26,27 @@ input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
 
-span{
+span {
   color: white;
 }
 
-label{
+label {
   color: white;
 }
 
+.card-1 {
+  width: 50%;
+  height: match-parent;
+  overflow: hidden;
+  opacity: 0.7;
+  background-color: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 40%;
+  width: 40%;
+}
