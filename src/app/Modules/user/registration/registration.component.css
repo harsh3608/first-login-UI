@@ -1,0 +1,83 @@
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* background-image: url("~/src/assets/images/background1.jpg"); */
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+  width: 60%;
+}
+
+.card {
+  width: 100%;
+  height: match-parent;
+  overflow: hidden;
+  opacity: 0.7;
+  background-color: black;
+  /* backdrop-filter: blur(10px); */
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+span {
+  color: white;
+}
+
+label {
+  color: white;
+}
+
+.card-1 {
+  width: 50%;
+  height: match-parent;
+  overflow: hidden;
+  opacity: 0.7;
+  background-color: black;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.logo {
+  height: 50%;
+  width: 50%;
+}
+
+#title {
+  color: white;
+  font-size: 30px;
+  margin-bottom: 10vh;
+  margin-top: 5vh;
+}
+
+#login-header {
+  color: white;
+  font-size: 30px;
+}
+
+#form {
+  margin-top: 5vh;
+  overflow-y: scroll;
+}
+
+input {
+  border: none;
+  border-radius: 20px;
+  padding: 8px 12px;
+  font-size: 14px;
+  outline: none;
+  
+}
+
+#sign-in-link {
+  margin-left: 15vh;
+}
