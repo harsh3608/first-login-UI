@@ -10,6 +10,7 @@ import { Title } from '@angular/platform-browser';
 export class RegistrationComponent implements OnInit{
   registationForm!: FormGroup;
   public showPassword: boolean = false;
+  genderOptions: string[] = ['Male','Female','Other'];
 
   constructor(
     private title: Title,
@@ -19,8 +20,12 @@ export class RegistrationComponent implements OnInit{
   ngOnInit(): void {
     this.title.setTitle('Registration');
     this.registationForm = this.fb.group({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required])
+      Name: new FormControl('', [Validators.required]),
+      Gender: new FormControl('', [Validators.required]),
+      Email: new FormControl('', [Validators.required]),
+      Phone: new FormControl('', [Validators.required]),
+      Password: new FormControl('', [Validators.required])
+      
     });
 
   }
@@ -35,10 +40,22 @@ export class RegistrationComponent implements OnInit{
 
 
   //Getter functions to get for-values from form-controls
+  get Name(): FormControl {
+    return this.registationForm.get("email") as FormControl;
+  }
+  get Gender(): FormControl {
+    return this.registationForm.get("password") as FormControl;
+  }
   get Email(): FormControl {
     return this.registationForm.get("email") as FormControl;
   }
+  get Phone(): FormControl {
+    return this.registationForm.get("password") as FormControl;
+  }
   get Password(): FormControl {
+    return this.registationForm.get("email") as FormControl;
+  }
+  get ConfirmPassword(): FormControl {
     return this.registationForm.get("password") as FormControl;
   }
 }
