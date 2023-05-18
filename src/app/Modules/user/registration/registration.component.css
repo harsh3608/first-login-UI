@@ -4,6 +4,9 @@
   align-items: center;
   height: 100vh;
   background-image: url("~/src/assets/images/background1.jpg");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .box {

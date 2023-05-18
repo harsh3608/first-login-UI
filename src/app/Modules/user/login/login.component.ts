@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { Login } from '../shared/user-models/user-models';
 import { UserService } from '../shared/services/user.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit{
     private title:Title,
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +34,6 @@ export class LoginComponent implements OnInit{
   }
 
   submitForm(){
-    debugger
     this.isLoading = true;
     setTimeout(() => {
       this.loginForm.markAllAsTouched();
@@ -40,17 +41,24 @@ export class LoginComponent implements OnInit{
         this.loginRequest = this.loginForm.value;
         this.userService.loginUser(this.loginRequest).subscribe({
           next: (res) => {
-            if(res){
+            if(res.isSuccess && res.statusCode==200){
               console.log(res);
-              localStorage.setItem('token',res.token);
+              this.toastr.success(res.message, 'Success!',{
+                timeOut: 2000,
+              });
+              localStorage.setItem('token',res.response.token);
               this.router.navigate(['home']);
               this.isLoading = false;
+            } 
+            else if(!res.isSuccess && res.statusCode==500){
+              console.log(res);
+              this.isLoading = false;
+              this.loginForm.reset();
+              this.toastr.error(res.message, 'Failure!',{
+                timeOut: 2000,
+              });
+
             }
-          },
-          error: (err) => {
-            this.isLoading = false;
-            console.log(err.error.detail);
-            this.router.navigate(['/']);
           }
         });
       }

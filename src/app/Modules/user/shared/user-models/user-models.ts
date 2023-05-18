@@ -12,10 +12,17 @@ export interface UserRegister{
   confirmPassword: string
 }
 
-export interface ReturnResponse {
+export interface AuthenticationResponse {
     personName: string
     email: string
     token: string
     expiration: string
-  }
+}
+
+export interface ReturnResponse {
+    statusCode: number
+    isSuccess: boolean
+    response: AuthenticationResponse
+    message: string
+}
 
