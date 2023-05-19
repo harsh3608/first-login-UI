@@ -1,1 +1,121 @@
-<p>registration works!</p>
+<div class="parent">
+    <div *ngIf="isLoading">
+        <div class="spinner-border text-info" style="scale: 2.0;"></div>
+    </div>
+    
+    <div class="box" *ngIf="!isLoading">
+
+        <div class="card  rounded p-2">
+            <form id="form" [formGroup]="registationForm" (ngSubmit)="submitForm()">
+                <div class="row g-0">
+                    <div class="col text-center p-2 mb-2">
+                        <h1 id="login-header">User Registration</h1>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col mb-3 form-input">
+                            <div style="margin-bottom: 10px;">
+                                <label for="PersonName" class="form-label">Person Name</label>
+                                <input type="text" class="form-control" id="PersonName" formControlName="PersonName">
+                                <div style="font-size: small;" class="form-text text-danger"
+                                    *ngIf="PersonName.errors?.['required'] && (PersonName.touched || PersonName.dirty)">
+                                    Person Name is Required !
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col mb-3 form-input">
+                            <div style="margin-bottom: 10px;">
+                                <label for="Gender" class="form-label">Gender</label>         
+                                <select class="form-control" id="Gender" formControlName="Gender">                           
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div style="font-size: small;" class="form-text text-danger"
+                                    *ngIf="Gender.errors?.['required'] && (Gender.touched || Gender.dirty)">
+                                    Gender is Required !
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col mb-3 form-input">
+                            <div style="margin-bottom: 10px;">
+                                <label for="Email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="Email" formControlName="Email">
+                                <div style="font-size: small;" class="form-text text-danger"
+                                    *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)">
+                                    Email is Required !
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="col mb-3 form-input">
+                            <div style="margin-bottom: 10px;">
+                                <label for="PhoneNumber" class="form-label">Phone Number</label>
+                                <input type="text" maxlength="10" class="form-control" id="PhoneNumber" formControlName="PhoneNumber">
+                                <div style="font-size: small;" class="form-text text-danger"
+                                    *ngIf="PhoneNumber.errors?.['required'] && (PhoneNumber.touched || PhoneNumber.dirty)">
+                                    Phone Number is Required !
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3 ">
+                        <div class="col mb-3 form-input">
+                            <label for="Password" class="form-label">Password</label>
+                            <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="Password"
+                                formControlName="Password" max-length="15">
+                            <div style="font-size: small;" class="form-text text-danger"
+                                *ngIf="Password.errors?.['required'] && (Password.touched || Password.dirty)">
+                                Password is Required !
+                            </div>
+                            <div style="margin-top: 10px;">
+                                <label for="showPass" style="margin-right: 10px;">Show Password</label>
+                                <input type="checkbox" (click)="togglePasswordVisibility()" id="showPass">
+                            </div>
+                        </div>
+
+                        <div class="col mb-3 form-input">
+                            <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+                            <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="ConfirmPassword"
+                                formControlName="ConfirmPassword" max-length="15">
+                            <div style="font-size: small;" class="form-text text-danger"
+                                *ngIf="ConfirmPassword.errors?.['required'] && (ConfirmPassword.touched || ConfirmPassword.dirty)">
+                                Confirm Password is Required !
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-6 offset-3">
+                            <div class="d-grid">
+                                <button type="submit" 
+                                    style="background-color: blueviolet; border-color: blueviolet;"
+                                    class="btn rounded-pill btn-primary">Sign Up</button>
+                                <div  id="sign-in-link">
+                                    <span>Already registered?</span> 
+                                    <a [routerLink]="['/login/']">Sign In</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <!-- <div class="card-1  border rounded p-2">
+            <h1 id="title">Template Title</h1>
+            <img id="logo" class="logo" src="assets/images/logo.png" />
+        </div> -->
+    </div>
+
+</div>

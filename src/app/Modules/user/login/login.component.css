@@ -4,6 +4,9 @@
   align-items: center;
   height: 100vh;
   background-image: url("~/src/assets/images/background1.jpg");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .box {
@@ -42,11 +45,37 @@ label {
   background-color: black;
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
 }
 
 .logo {
-  height: 40%;
-  width: 40%;
+  height: 50%;
+  width: 50%;
+}
+
+#title {
+  color: white;
+  font-size: 30px;
+  margin-bottom: 10vh;
+  margin-top: 5vh;
+}
+
+#login-header{
+  color: white;
+  font-size: 30px;
+  
+}
+
+#form {
+  margin-top: 5vh;
+}
+
+input {
+  border: none;
+  border-radius: 20px;
+  padding: 8px 12px;
+  font-size: 14px;
+  outline: none;
 }

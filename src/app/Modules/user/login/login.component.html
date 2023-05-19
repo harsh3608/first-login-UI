@@ -1,27 +1,30 @@
 <div class="parent">
-
-    <div class="box">
+    <div *ngIf="isLoading">
+        <div class="spinner-border text-info" style="scale: 2.0;"></div>
+    </div>
+    
+    <div class="box" *ngIf="!isLoading">
 
         <div class="card  rounded p-2">
-            <form class="mt-2" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+            <form id="form" [formGroup]="loginForm" (ngSubmit)="submitForm()">
                 <div class="row g-0">
-                    <div class="col text-center p-2 mb-3">
-                        <span class="fs-3">First Login Template</span>
+                    <div class="col text-center p-2 mb-2">
+                        <h1 id="login-header">First Login Template</h1>
                     </div>
 
                     <div class="row mt-4">
                         <div class="col mb-3 form-input">
                             <div style="margin-bottom: 10px;">
                                 <label for="Email" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="Email" formControlName="email">
+                                <input type="text" class="form-control" id="Email" formControlName="Email">
                                 <div style="font-size: small;" class="form-text text-danger"
                                     *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)">
                                     Email is Required !
                                 </div>
-                                <div style="font-size: small;" class="form-text text-danger"
+                                <!-- <div style="font-size: small;" class="form-text text-danger"
                                     *ngIf="Email.errors?.['email'] || Email.errors?.['pattern'] && (Email.touched || Email.dirty)">
                                     Please enter valid Email !
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -30,7 +33,7 @@
                         <div class="col mb-3 form-input">
                             <label for="Password" class="form-label">Password</label>
                             <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="Password"
-                                formControlName="password" max-length="15">
+                                formControlName="Password" max-length="15">
                             <div style="font-size: small;" class="form-text text-danger"
                                 *ngIf="Password.errors?.['required'] && (Password.touched || Password.dirty)">
                                 Password is Required !
@@ -48,6 +51,10 @@
                                 <button type="submit" [disabled]="loginForm.invalid"
                                     style="background-color: blueviolet; border-color: blueviolet;"
                                     class="btn rounded-pill btn-primary">Login</button>
+                                <div>
+                                    <span>Not registered yet?</span> 
+                                    <a [routerLink]="['/register/']">Sign Up</a>
+                                </div>
                             </div>
                         </div>
 
@@ -58,11 +65,8 @@
         </div>
 
         <div class="card-1  border rounded p-2">
-            
-            <span>Template Title</span>
-            <img class="logo" src="assets/images/logo.png" />
-            
-            
+            <h1 id="title">Template Title</h1>
+            <img id="logo" class="logo" src="assets/images/logo.png" />
         </div>
     </div>
 
